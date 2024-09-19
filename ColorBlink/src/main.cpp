@@ -1,20 +1,22 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-#include <avr/power.h>
-#endif
-
+#define LED_PIN 48
+#define LED_COUNT 1
+#define BRIGHTNESS 50
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 void setup() {
 
-pinMode(LED_BUILTIN, OUTPUT);
+strip.begin();
+strip.show();
+strip.setBrightness(BRIGHTNESS);
 }
 
 void loop() {
 
-digitalWrite(LED_BUILTIN, HIGH);
-delay(1000);
-digitalWrite(LED_BUILTIN, LOW);
-delay(1000);
+// Fill along the length of the strip in various colors...
+colorWipe(strip.Color(255,   0,   0)     , 50); // Red
+colorWipe(strip.Color(  0, 255,   0)     , 50); // Green
+colorWipe(strip.Color(  0,   0, 255)     , 50); // Blue
 }
 
 // put function definitions here:
