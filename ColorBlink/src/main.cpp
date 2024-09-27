@@ -5,6 +5,21 @@
 #define BRIGHTNESS 50
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
+void Red () {
+  strip.setPixelColor(strip.Color(255,   0,   0)     , BRIGHTNESS);
+    strip.show();
+}
+
+void Green () {
+  strip.setPixelColor(strip.Color(0,   255,   0)     , BRIGHTNESS);
+    strip.show();
+}
+
+void Blue () {
+  strip.setPixelColor(strip.Color(0,   0,   255)     , BRIGHTNESS);
+    strip.show();
+}
+
 void setup() {
   strip.begin();
   strip.show();
@@ -12,10 +27,7 @@ void setup() {
 }
 
 void loop() {
-  strip.setPixelColor(strip.Color(255,   0,   0)     , 50); // Red
-    strip.show();
-  strip.setPixelColor(strip.Color(0,   255,   0)     , 50); // Green
-    strip.show();
-  strip.setPixelColor(strip.Color(0,   0,   255)     , 50); // Blue
-    strip.show();
+  Red;
+  Green;
+  Blue;
 }
