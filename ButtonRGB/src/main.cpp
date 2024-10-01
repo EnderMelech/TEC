@@ -1,18 +1,14 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include <Adafruit_NeoPixel.h>
+#define LED_PIN 48
+#define LED_COUNT 1
+#define BRIGHTNESS 255
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
