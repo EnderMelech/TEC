@@ -1,4 +1,4 @@
-
+3v3 pin to positive, gnd pin to negative, resistor from positive to button, negative to side 2 of button, pin 5 to side 2 of button
 This directory is intended for project header files.
 
 A header file is a file containing C declarations and macro definitions
