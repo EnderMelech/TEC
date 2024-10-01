@@ -29,8 +29,8 @@ void setup() {
 void loop() {
   Red();
   delay(100);
- // Green();
-  //delay(100);
-  //Blue();
+  Green();
+  delay(100);
+  Blue();
   delay(100);
 }
