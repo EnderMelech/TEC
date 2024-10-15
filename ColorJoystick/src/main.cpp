@@ -1,18 +1,18 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-const int xPin = 27;
-const int yPin = 26;
-const int swPin = 25;
+const int xPin = 7;
+const int yPin = 6;
+const int swPin = 5;
 #define LED_PIN 48
 #define LED_COUNT 1
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-boolean oldState = HIGH;
-int     mode     = 0;
+//boolean oldState = HIGH;
+//int     mode     = 0;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(swPin, INPUT_PULLUP);
   strip.begin();
   strip.show();
 }
@@ -38,29 +38,32 @@ void Black() {
 }
 
 void loop() {
-  boolean newState = digitalRead(BUTTON_PIN);
-
-  if((newState == LOW) && (oldState == HIGH)) {
-    delay(20);
-    newState = digitalRead(BUTTON_PIN);
-    if(newState == LOW) {
-      if(++mode > 3) mode = 0;
-      switch(mode) {
-        case 0:
-          Black();
-          break;
-        case 1:
-          Red();
-          break;
-        case 2:
-          Green();
-          break;
-        case 3:
-          Blue();
-          break;
-      }
-    }
+  if (swPin == HIGH) {
+    Red();
   }
+//  boolean newState = digitalRead(xPin);
 
-  oldState = newState;
+//  if((newState == LOW) && (oldState == HIGH)) {
+//    delay(20);
+//    newState = digitalRead(swPin);
+//    if(newState == LOW) {
+//      if(++mode > 3) mode = 0;
+//      switch(mode) {
+//        case 0:
+//          Black();
+//          break;
+//        case 1:
+//          Red();
+//          break;
+//        case 2:
+//          Green();
+//          break;
+//        case 3:
+//          Blue();
+//          break;
+//      }
+//    }
+//  }
+
+//  oldState = newState;
 }
