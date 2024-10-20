@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-const int xPin = 7;
-const int yPin = 6;
-const int swPin = 5;
+#define xPin 7
+#define yPin 6
+#define swPin 5
 #define LED_PIN 48
 #define LED_COUNT 1
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
@@ -12,7 +12,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   Serial.begin(9600);
-  pinMode(swPin, INPUT_PULLUP);
+  pinMode(xPin, INPUT_PULLUP);
   strip.begin();
   strip.show();
 }
@@ -38,9 +38,13 @@ void Black() {
 }
 
 void loop() {
-  if (swPin == HIGH) {
-    Red();
+  if (digitalRead(swPin) == LOW) {
+    Black();
   }
+  int rawXValue = analogRead(xPin);
+  int xValue = map(rawXValue, 0, 1023, 0, 255);
+  Serial.println(xValue);
+  delay(1000);
 //  boolean newState = digitalRead(xPin);
 
 //  if((newState == LOW) && (oldState == HIGH)) {
