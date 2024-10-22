@@ -8,6 +8,8 @@
 #define LED_COUNT 1
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
+int mode = 0;
+
 void setup() {
   Serial.begin(9600);
   pinMode(xPin, INPUT_PULLUP);
@@ -20,10 +22,7 @@ void Black() {
   strip.show();
 }
 
-void loop() {
-  if (digitalRead(swPin) == LOW) {
-    Black();
-  }
+void Color() {
   int redValue = 0;
   int greenValue = 0;
   int blueValue = 0;
@@ -50,4 +49,18 @@ void loop() {
   }
   strip.setPixelColor(0, strip.Color(redValue,   greenValue,    blueValue));
   strip.show();
+}
+
+void loop() {
+  if (digitalRead(swPin) == LOW) {
+    if(++mode > 1) mode = 0;
+      switch(mode) {
+        case 0:
+          Black();
+          break;
+        case 1:
+          Color();
+          break;
+      }
+  }
 }
