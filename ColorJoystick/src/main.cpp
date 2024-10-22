@@ -2,7 +2,6 @@
 #include <Adafruit_NeoPixel.h>
 #include <algorithm>
 #define xPin 7
-#define yPin 6
 #define swPin 5
 #define LED_PIN 48
 #define LED_COUNT 1
