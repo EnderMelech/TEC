@@ -8,6 +8,9 @@
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 int mode = 0;
+  int redValue = 0;
+  int greenValue = 0;
+  int blueValue = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -22,24 +25,21 @@ void Black() {
 }
 
 void Color() {
-  int redValue = 0;
-  int greenValue = 0;
-  int blueValue = 0;
   int rawXValue = analogRead(xPin);
   int xValue = map(rawXValue, 0, 4095, 0, 1532);
-  if (0 <= xValue <= 255, 1277 <= xValue <= 1532) {
+  if (xValue >= 0 && xValue <= 255 || xValue >= 1277 && xValue <= 1532) {
     redValue = 255;
   } else {
     redValue = std::max(0, 255-(xValue-255));
   }
-  if (255 <= xValue <= 766) {
+  if (xValue >= 255 && xValue <= 766) {
     blueValue = 255;
   } else if (xValue < 255) {
     blueValue = std::max(0, xValue);
   } else {
     blueValue = std::max(0, 255-(xValue-766));
   }
-  if (766 <= xValue <= 1277) {
+  if (xValue >= 766 && xValue <= 1277) {
     greenValue = 255;
   } else if (xValue < 766) {
     greenValue = std::max(0, xValue-511);
@@ -51,15 +51,18 @@ void Color() {
 }
 
 void loop() {
-  if (digitalRead(swPin) == LOW) {
-    if(++mode > 1) mode = 0;
-      switch(mode) {
-        case 0:
-          Black();
-          break;
-        case 1:
-          Color();
-          break;
-      }
-  }
+ Color();
+//bool oldState = HIGH;
+//bool newState = digitalRead(swPin);
+//  if (oldState == HIGH & newState == LOW) {
+//    if(++mode > 1) mode = 0;
+//      switch(mode) {
+//        case 0:
+//          Black();
+//          break;
+//        case 1:
+//          Color();
+//          break;
+//      }
+//  }
 }
