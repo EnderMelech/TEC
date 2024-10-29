@@ -27,7 +27,6 @@ void Black() {
 void Color() {
   int rawXValue = analogRead(xPin);
   int xValue = map(rawXValue, 0, 4095, 0, 1532);
-  Serial.println(xValue);
   if (xValue >= 0 && xValue <= 255 || xValue >= 1277 && xValue <= 1532) {
     redValue = 255;
   } else {
