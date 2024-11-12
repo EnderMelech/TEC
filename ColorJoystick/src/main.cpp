@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <string>
 #include <Adafruit_NeoPixel.h>
 #include <algorithm>
 #define xPin 7
