@@ -2,17 +2,20 @@
 #define echo 3
 #define trig 2
 
-int t0=0; // time when you pulled the trigger
-// t1 can represent when you receive the echo, t1-t0=the time for the burst to reach the obstacle and return
-// d=v*((t1-t0)/2) d is distance and v is speed (in this case it's speed of sound which is 343 m/s)
+int t0=0;
+unsigned long t1=0;
+unsigned long t2=0;
+unsigned long t1Local=0;
+unsigned long t2Local=0;
+bool falling = false;
 
 void measureTime() {
- if (digitalRead)(echo) == HIGH {
-    int t0=micros();
+ if (digitalRead(echo) == HIGH) {
+    t1=micros();
  }
  if (digitalRead(echo) == LOW) {
-    int t1=micros();
-    Serial.println((343/10^6)*((t1-t0)/2));
+    t2=micros();
+    falling = true;
  }
 }
 
@@ -29,6 +32,12 @@ void loop() {
     digitalWrite(trig, HIGH);
     delayMicroseconds(10);
     digitalWrite(trig, LOW);
-    delay(1000);
-}
+ if (falling == true) {
+   noInterrupts();
+   unsigned long t1Local = t1;
+   unsigned long t2Local = t2;
+   interrupts();
+   Serial.println(0.0343*((t2Local-t1Local)/2));
+ }
+ }
 }
