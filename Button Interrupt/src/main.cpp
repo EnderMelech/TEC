@@ -7,15 +7,17 @@ bool oldState = newState;
 int number = 0;
 
 void checkButton() {
-  if
+  oldState = newState;
 }
 
 void changeLights() {
-  digitalWrite(LED_BUILTIN, newState);
-  newState = !newState;
-  number = number + 1;
-  Serial.println(number);
-  Serial.println("Falling");
+  if(oldState != newState) {
+    digitalWrite(LED_BUILTIN, newState);
+    newState = !newState;
+    number = number + 1;
+    Serial.println(number);
+    Serial.println("Falling");
+  }
 }
 
 void setup() {
@@ -25,7 +27,7 @@ void setup() {
   newState = !newState;
   Timer1.initialize(30000);
   Timer1.attachInterrupt(checkButton);
-  //attachInterrupt(digitalPinToInterrupt(button), changeLights, FALLING);
+  attachInterrupt(digitalPinToInterrupt(button), changeLights, FALLING);
   Serial.begin(9600);
 }
 
