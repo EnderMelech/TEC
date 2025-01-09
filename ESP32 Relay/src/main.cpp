@@ -3,7 +3,7 @@
 
 void setup() {
   WiFi.mode(WIFI_STA);
-  WiFi.begin("NETGEAR23-5Ga","rustictree335");
+  WiFi.begin("NETGEAR23-5G","rustictree335");
   Serial.begin(115200);
   Serial.println("Hello World!");
   while (WiFi.status() != WL_CONNECTED) {
