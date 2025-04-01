@@ -1,0 +1,23 @@
+CMake Error at C:/Users/linzr/esp/v5.2.3/esp-idf/tools/cmake/build.cmake:552 (message):
+  ERROR: Because no versions of espressif/esp_tinyusb match >1.4.4,<1.4.5 ||
+  >1.4.5,<1.5.0 || >1.5.0,<1.6.0 || >1.6.0
+
+   and espressif/esp_tinyusb (1.4.4) depends on espressif/tinyusb (>=0.14.2), espressif/esp_tinyusb (>=1.4.4,<1.4.5 || >1.4.5,<1.5.0 || >1.5.0,<1.6.0 || >1.6.0) requires espressif/tinyusb (>=0.14.2).
+
+  And because espressif/esp_tinyusb (1.4.5) depends on espressif/tinyusb
+  (>=0.14.2), espressif/esp_tinyusb (>=1.4.4,<1.5.0 || >1.5.0,<1.6.0 ||
+  >1.6.0) requires espressif/tinyusb (>=0.14.2).
+
+  And because espressif/esp_tinyusb (1.5.0) depends on both espressif/tinyusb
+  (>=0.14.2) and espressif/tinyusb (>=0.14.2), espressif/esp_tinyusb
+  (>=1.4.4) requires espressif/tinyusb (>=0.14.2).
+
+  So, because no versions of espressif/tinyusb match >=0.14.2
+
+   and project depends on espressif/esp_tinyusb (>=1.4.4), version solving failed.
+
+Call Stack (most recent call first):
+  C:/Users/linzr/esp/v5.2.3/esp-idf/tools/cmake/project.cmake:605 (idf_build_process)
+  CMakeLists.txt:8 (project)
+
+
