@@ -1,9 +1,10 @@
 {
     "idf.portWin": "COM165",
-    "idf.espIdfPathWin": "C:\\Users\\linzr\\esp\\v5.2.3\\esp-idf",
-    "idf.toolsPathWin": "e:\\esp-idf\\tools",
+    "idf.espIdfPathWin": "c:\\Users\\Ej031\\esp\\v5.3.2\\esp-idf",
+    "idf.toolsPathWin": "c:\\Users\\Ej031\\.espressif",
     "idf.openOcdConfigs": [
         "board/esp32s3-builtin.cfg"
     ],
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "idf.pythonInstallPath": "c:\\Users\\Ej031\\.espressif\\tools\\idf-python\\3.11.2\\python.exe"
 }
